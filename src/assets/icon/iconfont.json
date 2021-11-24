@@ -1,0 +1,30 @@
+{
+  "id": "2961368",
+  "name": "计算器",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15392661",
+      "name": "历史",
+      "font_class": "lishi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "7179468",
+      "name": "加减",
+      "font_class": "jiajian",
+      "unicode": "e743",
+      "unicode_decimal": 59203
+    },
+    {
+      "icon_id": "9199390",
+      "name": "计算器删除",
+      "font_class": "shanchu",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    }
+  ]
+}
