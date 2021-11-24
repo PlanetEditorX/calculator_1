@@ -64,7 +64,8 @@ export default {
         if (this.inputValue === '0') {
           this.inputValue = String(num)
         } else {
-          if (this.inputValue.replace(/^-/, '').length < 17) {
+          let len = (/\./).test(this.inputValue) ? 17 : 16
+          if (this.inputValue.replace(/^-/, '').length < len) {
             this.inputValue += String(num)
           }
         }
@@ -83,14 +84,14 @@ export default {
     },
     // 小数点
     handleDot () {
-      if (!(/\./).test(this.inputValue) && this.inputValue.replace(/^-/, '').length < 8) {
+      if (!(/\./).test(this.inputValue) && this.inputValue.replace(/^-/, '').length < 16) {
         this.inputValue = this.inputValue + '.'
       }
     },
     // 删除一位
     handleDelOne () {
       let originVal = this.inputValue.replace(/^-/, '')
-      if (originVal.length <= 17 && originVal.length > 1) {
+      if (originVal.length > 1) {
         this.inputValue = this.inputValue.slice(0, -1)
       } else if (originVal.length === 1) {
         this.inputValue = '0'
@@ -161,8 +162,13 @@ export default {
       if (length > 3 && !/^0/.test(result)) {
         let only = length % 3
         result = this.inputValue.slice(0, only)
+        let dotSite = this.inputValue.indexOf('.') === -1 ? length : this.inputValue.indexOf('.')
         for (let i = only; i < length; i += 3) {
-          result += ',' + this.inputValue.slice(i, i + 3)
+          if (i < dotSite) {
+            result += ',' + this.inputValue.slice(i, i + 3)
+          } else {
+            result += this.inputValue.slice(i, i + 3)
+          }
         }
       }
       result = result.replace(/^,/, '')
